@@ -1,0 +1,66 @@
+<section class="section">
+    <div class="container">
+        <div class="column">
+            <h1 class="title is-1">Projet CityCAR</h1>
+        </div>
+        <br />
+
+        <section>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th *ngFor="let poste of lesPostes">
+                            {{poste.nom}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td *ngFor="let poste of lesPostes">
+                            <figure class="image is-128x128">
+                                <img src="assets/images/{{poste.img}}" />
+                            </figure>
+
+
+                            <div *ngIf="poste.etat; then onCar else offCar"></div>
+
+                            <ng-template #offCar>
+                                <form [formGroup]="offForm" (ngSubmit)="on(poste.id)">
+                                    <div class="field">
+
+                                        <label class="label">Nom du client</label>
+                                        <div class="control">
+                                            <input class="input is-success" formControlName="client" type="text"
+                                                placeholder="-" value="">
+                                        </div>
+                                    </div>
+                                    <div class="field is-grouped">
+                                        <div class="control">
+                                            <button class="button is-link">On</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </ng-template>
+                            <ng-template #onCar>
+                                <form [formGroup]="onForm" (ngSubmit)="off(poste.id)">
+                                    <div class="field">
+                                        <label class="label">Véhicule de {{poste.client}}</label>
+                                    </div>
+                                    <div class="field is-grouped">
+                                        <div class="control">
+                                            <button class="button is-link">Off</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </ng-template>
+
+
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+</section>
