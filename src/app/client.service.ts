@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Client } from './client';
+import { HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,9 @@ import { Client } from './client';
 export class ClientService {
 
   private clients: Client[];
+  
 
-  constructor() { this.clients = []; }
+  constructor(private http: HttpClient) { this.clients = []; }
 
   getALLClients() {
     this.clients = JSON.parse(localStorage.getItem('Clients') || '[]');
@@ -19,5 +21,7 @@ export class ClientService {
     this.clients.push(client);
     let tabItems = JSON.stringify(this.clients);
     localStorage.setItem('Clients', tabItems);
+    console.log(client);
+    this.http.post('http://localhost:4201/addClient', client).subscribe();
   }
 }

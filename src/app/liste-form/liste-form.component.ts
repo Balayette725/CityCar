@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
 @Component({
@@ -14,7 +13,7 @@ export class ListeFormComponent implements OnInit {
   message = "";
   codetab= [];
   codes = this.http.get<any[]>('http://localhost:4201');
-  codesval = this.codes.subscribe(lecode => {this.codetab = lecode})
+  codesval = this.codes.subscribe(lecode => {this.codetab = lecode});
 
   constructor(private http: HttpClient) { }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
+
 import { Client } from '../client';
 import { ClientService } from '../client.service';
 
@@ -39,6 +40,7 @@ export class VisuelComponent implements OnInit {
     this.onForm = new FormGroup({
       client: new FormControl()
     });
+    console.log(this.clientService.getALLClients());
   }
 
   on(n: number) {
@@ -64,8 +66,8 @@ export class VisuelComponent implements OnInit {
 
     this.lesPostes[n].client = "";
     this.lesPostes[n].etat = false;
-
     return;
   }
+  
 
 }

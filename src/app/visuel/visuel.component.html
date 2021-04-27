@@ -28,7 +28,7 @@
                                 <form [formGroup]="offForm" (ngSubmit)="on(poste.id)">
                                     <div class="field">
 
-                                        <label class="label">Nom du client</label>
+                                        <label class="label">Nom du client (disponible)</label>
                                         <div class="control">
                                             <input class="input is-success" formControlName="client" type="text"
                                                 placeholder="-" value="">
@@ -44,7 +44,7 @@
                             <ng-template #onCar>
                                 <form [formGroup]="onForm" (ngSubmit)="off(poste.id)">
                                     <div class="field">
-                                        <label class="label">Véhicule de {{poste.client}}</label>
+                                        <label class="label">Occupé par : {{poste.client}}</label>
                                     </div>
                                     <div class="field is-grouped">
                                         <div class="control">
