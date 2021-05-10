@@ -1,0 +1,41 @@
+<div class="container box " style="width: 50em;">
+    <form [formGroup]="form" (ngSubmit)='getCode()'>
+        <div class="field">
+    
+            <label class="label">Votre code d'indentification</label>
+            <div class="control">
+                <input class="input is-dark" formControlName="code" type="number"
+                    placeholder="ex : 12345" value="">
+            </div>
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-dark">Soumettre</button>
+            </div>
+        </div>
+    </form>
+    <div *ngIf='message != ""'>
+        {{message}}
+    </div>
+    <div *ngFor='let code of codes | async'>
+        {{code.code}}
+    </div>
+    <div *ngIf='isConnected == true'>    
+    <button class="button is-primary" (click)="saveAllClient()">Enregistrer dans la Base de données</button>
+    <button class="button is-danger" (click)="deleteAllClient()" >Effacer les données</button>
+    <table class="table">
+        <thead>
+        <tr>
+        <th>nom</th>
+        <th>service</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  *ngFor='let client of tableauClients '>
+        <td>{{client.nom}}</td>
+        <td>{{client.service}}</td>
+    </tr>
+   </tbody>
+</table>
+</div>
+</div>
